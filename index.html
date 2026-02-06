@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomify - IA E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div id="login-screen" class="fixed inset-0 bg-[#0a0f1e] z-[100] flex items-center justify-center">
+        <div class="bg-[#161e31] p-10 rounded-[2.5rem] shadow-2xl border border-green-500/20 w-full max-w-md text-center">
+            <h1 class="text-4xl font-black gradient-text mb-2">Ecomify</h1>
+            <p class="text-gray-400 mb-8">Entrez votre code d'accès</p>
+            <input type="password" id="pass-input" placeholder="Mot de passe..." class="w-full p-4 bg-[#1f2937] rounded-xl border border-gray-700 text-white mb-4 focus:outline-none focus:border-blue-500">
+            <button onclick="checkPass()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all">Accéder à la plateforme</button>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden min-h-screen flex flex-col">
+        
+        <header class="bg-white border-b border-gray-100 sticky top-0 z-50 px-6 py-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic shadow-lg shadow-blue-500/30 text-xl">E</div>
+                    <span class="text-2xl font-black tracking-tighter text-slate-800">Ecom<span class="text-green-500 font-black">ify</span></span>
+                </div>
+                <nav class="hidden md:flex gap-8 text-xs font-black uppercase text-gray-400 tracking-widest">
+                    <a href="#" class="hover:text-blue-600">Products</a>
+                    <a href="#" class="hover:text-blue-600">Trending</a>
+                    <a href="#" class="hover:text-blue-600">Ads Library</a>
+                    <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold">Boutique IA ✨</button>
+                </nav>
+                <button onclick="location.reload()" class="text-red-400 font-bold text-xs uppercase hover:underline">Déconnexion</button>
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl mx-auto px-6 py-16 text-center">
+            <h2 class="text-6xl font-black text-slate-900 mb-6 tracking-tight">Vendez plus avec l'IA.</h2>
+            <p class="text-gray-500 text-xl max-w-2xl mx-auto mb-12 font-medium">L'outil de dropshipping automatisé pour les e-commerçants de 2026.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="p-10 bg-white border border-gray-100 rounded-[2rem] shadow-sm hover:shadow-xl transition-all">
+                    <h3 class="text-lg font-bold text-gray-400 uppercase">Starter</h3>
+                    <p class="text-5xl font-black my-4 text-slate-900">29€<span class="text-lg font-normal text-gray-400">/m</span></p>
+                    <button class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold mt-6">Démarrer</button>
+                </div>
+                <div class="p-10 bg-white border-2 border-blue-600 rounded-[2rem] shadow-2xl relative">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Recommandé</span>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase">Ecomify Pro</h3>
+                    <p class="text-5xl font-black my-4 text-slate-900">79€<span class="text-lg font-normal text-gray-400">/m</span></p>
+                    <button class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold mt-6 shadow-lg shadow-blue-500/40">Devenir un Pro</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="fixed bottom-8 right-8 flex flex-col items-end">
+            <div id="chat-box" class="hidden w-80 h-96 bg-white shadow-2xl rounded-3xl border border-gray-100 mb-4 overflow-hidden flex flex-col animate-bounce-in">
+                <div class="bg-slate-900 p-4 text-white font-bold flex justify-between">
+                    <span>Ecomify Chat Bot</span>
+                    <button onclick="toggleChat()">✕</button>
+                </div>
+                <div class="flex-1 p-4 overflow-y-auto space-y-4">
+                    <div class="bg-blue-50 p-3 rounded-2xl text-sm text-blue-800">
+                        Bonjour ! Je suis l'IA d'Ecomify. Pose-moi une question sur le dropshipping.
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <input type="text" placeholder="Ecrire un message..." class="w-full outline-none text-sm">
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="w-16 h-16 bg-slate-900 text-white rounded-full shadow-2xl text-3xl flex items-center justify-center hover:scale-110 transition-transform">🤖</button>
+        </div>
+
+    </div>
+
+    <script>
+        function checkPass() {
+            const input = document.getElementById('pass-input').value;
+            if(input === "ECOM2026") {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+            } else {
+                alert("Accès refusé.");
+            }
+        }
+
+        function toggleChat() {
+            const chat = document.getElementById('chat-box');
+            chat.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
